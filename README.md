@@ -2,6 +2,8 @@
 
 Consiste num CRUD de um sistema de livraria.<br>
 <h2> Funcionalidades:</h2>
-- Adiciona, atualiza, lista e remove livros;
-- Adiciona, atualiza, lista e remove clientes;
-- Registra venda de livros aos clientes;
+<ul>
+<li>Adiciona, atualiza, lista e remove livros;</li>
+<li>Adiciona, atualiza, lista e remove clientes;</li>
+<li>Registra venda de livros aos clientes;</li>
+</ul>
