@@ -49,14 +49,14 @@ class InterfaceGrafica:
     def criar_pagina(self, titulo, campos, funcao, voltar_para):
         self.clear_frame()
         self.root.geometry("400x400")
-        self.root.configure(bg="#F0F0F0")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text=titulo, font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text=titulo, font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
         entry_widgets = []
         for campo in campos:
-            label = tk.Label(self.root, text=f"{campo}:", bg="#F0F0F0")
+            label = tk.Label(self.root, text=f"{campo}:", bg="#ffffff")
             label.pack(pady=5)
             entry = tk.Entry(self.root, font=("Helvetica", 12))
             entry.pack(pady=5)
@@ -71,9 +71,9 @@ class InterfaceGrafica:
     def menu_inicial(self):
         self.clear_frame()
         self.root.geometry("400x300")
-        self.root.configure(bg="#F0F0F0")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text="MENU INICIAL", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="MENU INICIAL", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
         button_livros = tk.Button(self.root, text="Cadastro de Livros", command=self.menu_livro, font=("Helvetica", 12))
@@ -85,11 +85,26 @@ class InterfaceGrafica:
         button_vendas = tk.Button(self.root, text="Registrar Venda", command=self.tela_registrar_venda, font=("Helvetica", 12))
         button_vendas.pack(pady=10)
 
+        button_vendas_registradas = tk.Button(self.root, text="Vendas Registradas", command=self.listar_vendas_registradas, font=("Helvetica", 12))
+        button_vendas_registradas.pack(pady=10)
+        
+    def listar_vendas_registradas(self):
+        vendas_window = tk.Toplevel(self.root)
+        vendas_window.title("Vendas Registradas")
+
+        vendas_listbox = tk.Listbox(vendas_window, font=("Helvetica", 12), selectmode=tk.SINGLE)
+        vendas_listbox.pack(pady=20, padx=20)
+
+        # Adicione as vendas à lista
+        for i, venda in enumerate(vendas):
+            venda_info = f"Venda {i + 1}: Cliente - {venda.cliente.nome}, Data - {venda.data}, Valor Total - R${venda.valor_total:.2f}"
+            vendas_listbox.insert(tk.END, venda_info)
+            
     def menu_livro(self):
         self.clear_frame()
-        self.root.geometry("400x300")
+        self.root.geometry("400x350")
 
-        label = tk.Label(self.root, text="MENU LIVROS", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="MENU LIVROS", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
         button_adicionar = tk.Button(self.root, text="Adicionar Livro", command=self.tela_cadastrar_livros, font=("Helvetica", 12))
@@ -109,9 +124,9 @@ class InterfaceGrafica:
     
     def menu_clientes(self):
         self.clear_frame()
-        self.root.geometry("400x300")
+        self.root.geometry("400x350")
 
-        label = tk.Label(self.root, text="MENU CLIENTES", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="MENU CLIENTES", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
         button_adicionar = tk.Button(self.root, text="Adicionar Cliente", command=self.tela_cadastrar_cliente, font=("Helvetica", 12))
@@ -150,13 +165,13 @@ class InterfaceGrafica:
 
     def deletar_livro(self):
         self.clear_frame()
-        self.root.geometry("400x200")
-        self.root.configure(bg="#F0F0F0")
+        self.root.geometry("400x250")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text="REMOVER LIVRO", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="REMOVER LIVRO", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
-        label_titulo = tk.Label(self.root, text="Título do livro a ser removido:", bg="#F0F0F0")
+        label_titulo = tk.Label(self.root, text="Título do livro a ser removido:", bg="#ffffff")
         label_titulo.pack(pady=5)
         self.entry_titulo = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_titulo.pack(pady=5)
@@ -178,18 +193,18 @@ class InterfaceGrafica:
 
     def atualizar_livro(self):
         self.clear_frame()
-        self.root.geometry("400x250")
-        self.root.configure(bg="#F0F0F0")
+        self.root.geometry("400x320")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text="ATUALIZAR PREÇO DO LIVRO", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="ATUALIZAR PREÇO DO LIVRO", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
-        label_titulo = tk.Label(self.root, text="Título do livro a ser atualizado:", bg="#F0F0F0")
+        label_titulo = tk.Label(self.root, text="Título do livro a ser atualizado:", bg="#ffffff")
         label_titulo.pack(pady=5)
         self.entry_titulo = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_titulo.pack(pady=5)
 
-        label_preco = tk.Label(self.root, text="Novo preço:", bg="#F0F0F0")
+        label_preco = tk.Label(self.root, text="Novo preço:", bg="#ffffff")
         label_preco.pack(pady=5)
         self.entry_preco = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_preco.pack(pady=5)
@@ -222,13 +237,13 @@ class InterfaceGrafica:
 
     def deletar_cliente(self):
         self.clear_frame()
-        self.root.geometry("400x200")
-        self.root.configure(bg="#F0F0F0")
+        self.root.geometry("400x250")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text="REMOVER CLIENTE", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="REMOVER CLIENTE", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
-        label_nome = tk.Label(self.root, text="Nome do cliente a ser removido:", bg="#F0F0F0")
+        label_nome = tk.Label(self.root, text="Nome do cliente a ser removido:", bg="#ffffff")
         label_nome.pack(pady=5)
         self.entry_nome = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_nome.pack(pady=5)
@@ -251,18 +266,18 @@ class InterfaceGrafica:
 
     def atualizar_cliente(self):
         self.clear_frame()
-        self.root.geometry("400x250")
-        self.root.configure(bg="#F0F0F0")
+        self.root.geometry("400x320")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text="ATUALIZAR ENDEREÇO DO CLIENTE", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="ATUALIZAR ENDEREÇO DO CLIENTE", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
-        label_nome = tk.Label(self.root, text="Nome do cliente a ser atualizado:", bg="#F0F0F0")
+        label_nome = tk.Label(self.root, text="Nome do cliente a ser atualizado:", bg="#ffffff")
         label_nome.pack(pady=5)
         self.entry_nome = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_nome.pack(pady=5)
 
-        label_endereco = tk.Label(self.root, text="Novo endereço:", bg="#F0F0F0")
+        label_endereco = tk.Label(self.root, text="Novo endereço:", bg="#ffffff")
         label_endereco.pack(pady=5)
         self.entry_endereco = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_endereco.pack(pady=5)
@@ -290,22 +305,22 @@ class InterfaceGrafica:
     def registrar_venda(self):
         self.clear_frame()
         self.root.geometry("400x400")
-        self.root.configure(bg="#F0F0F0")
+        self.root.configure(bg="#ffffff")
 
-        label = tk.Label(self.root, text="REGISTRAR VENDA", font=("Helvetica", 16), bg="#F0F0F0")
+        label = tk.Label(self.root, text="REGISTRAR VENDA", font=("Helvetica", 16), bg="#ffffff")
         label.pack(pady=20)
 
-        label_cliente = tk.Label(self.root, text="Nome do Cliente:", bg="#F0F0F0")
+        label_cliente = tk.Label(self.root, text="Nome do Cliente:", bg="#ffffff")
         label_cliente.pack(pady=5)
         self.entry_cliente = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_cliente.pack(pady=5)
 
-        label_livros = tk.Label(self.root, text="Livros (separados por vírgula):", bg="#F0F0F0")
+        label_livros = tk.Label(self.root, text="Livros (separados por vírgula):", bg="#ffffff")
         label_livros.pack(pady=5)
         self.entry_livros = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_livros.pack(pady=5)
 
-        label_data = tk.Label(self.root, text="Data da Venda:", bg="#F0F0F0")
+        label_data = tk.Label(self.root, text="Data da Venda:", bg="#ffffff")
         label_data.pack(pady=5)
         self.entry_data = tk.Entry(self.root, font=("Helvetica", 12))
         self.entry_data.pack(pady=5)
